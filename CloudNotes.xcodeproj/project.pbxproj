@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5571142C15A3E78A008F5398 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5571142B15A3E78A008F5398 /* UIKit.framework */; };
+		5571142E15A3E78A008F5398 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5571142D15A3E78A008F5398 /* Foundation.framework */; };
+		5571143015A3E78A008F5398 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5571142F15A3E78A008F5398 /* CoreGraphics.framework */; };
+		5571143615A3E78A008F5398 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5571143415A3E78A008F5398 /* InfoPlist.strings */; };
+		5571143815A3E78A008F5398 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571143715A3E78A008F5398 /* main.m */; };
+		5571143C15A3E78A008F5398 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571143B15A3E78A008F5398 /* AppDelegate.m */; };
+		5571144415A3E78B008F5398 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5571144315A3E78B008F5398 /* SenTestingKit.framework */; };
+		5571144515A3E78B008F5398 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5571142B15A3E78A008F5398 /* UIKit.framework */; };
+		5571144615A3E78B008F5398 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5571142D15A3E78A008F5398 /* Foundation.framework */; };
+		5571144E15A3E78B008F5398 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5571144C15A3E78B008F5398 /* InfoPlist.strings */; };
+		5571145115A3E78B008F5398 /* CloudNotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571145015A3E78B008F5398 /* CloudNotesTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5571144715A3E78B008F5398 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5571141E15A3E78A008F5398 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5571142615A3E78A008F5398;
+			remoteInfo = CloudNotes;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5571142715A3E78A008F5398 /* CloudNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5571142B15A3E78A008F5398 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5571142D15A3E78A008F5398 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5571142F15A3E78A008F5398 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5571143315A3E78A008F5398 /* CloudNotes-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CloudNotes-Info.plist"; sourceTree = "<group>"; };
+		5571143515A3E78A008F5398 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5571143715A3E78A008F5398 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5571143915A3E78A008F5398 /* CloudNotes-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudNotes-Prefix.pch"; sourceTree = "<group>"; };
+		5571143A15A3E78A008F5398 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5571143B15A3E78A008F5398 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5571144215A3E78B008F5398 /* CloudNotesTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudNotesTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5571144315A3E78B008F5398 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		5571144B15A3E78B008F5398 /* CloudNotesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CloudNotesTests-Info.plist"; sourceTree = "<group>"; };
+		5571144D15A3E78B008F5398 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5571144F15A3E78B008F5398 /* CloudNotesTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudNotesTests.h; sourceTree = "<group>"; };
+		5571145015A3E78B008F5398 /* CloudNotesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudNotesTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5571142415A3E78A008F5398 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5571142C15A3E78A008F5398 /* UIKit.framework in Frameworks */,
+				5571142E15A3E78A008F5398 /* Foundation.framework in Frameworks */,
+				5571143015A3E78A008F5398 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5571143E15A3E78B008F5398 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5571144415A3E78B008F5398 /* SenTestingKit.framework in Frameworks */,
+				5571144515A3E78B008F5398 /* UIKit.framework in Frameworks */,
+				5571144615A3E78B008F5398 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5571141C15A3E78A008F5398 = {
+			isa = PBXGroup;
+			children = (
+				5571143115A3E78A008F5398 /* CloudNotes */,
+				5571144915A3E78B008F5398 /* CloudNotesTests */,
+				5571142A15A3E78A008F5398 /* Frameworks */,
+				5571142815A3E78A008F5398 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5571142815A3E78A008F5398 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5571142715A3E78A008F5398 /* CloudNotes.app */,
+				5571144215A3E78B008F5398 /* CloudNotesTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5571142A15A3E78A008F5398 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5571142B15A3E78A008F5398 /* UIKit.framework */,
+				5571142D15A3E78A008F5398 /* Foundation.framework */,
+				5571142F15A3E78A008F5398 /* CoreGraphics.framework */,
+				5571144315A3E78B008F5398 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5571143115A3E78A008F5398 /* CloudNotes */ = {
+			isa = PBXGroup;
+			children = (
+				5571143A15A3E78A008F5398 /* AppDelegate.h */,
+				5571143B15A3E78A008F5398 /* AppDelegate.m */,
+				5571143215A3E78A008F5398 /* Supporting Files */,
+			);
+			path = CloudNotes;
+			sourceTree = "<group>";
+		};
+		5571143215A3E78A008F5398 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5571143315A3E78A008F5398 /* CloudNotes-Info.plist */,
+				5571143415A3E78A008F5398 /* InfoPlist.strings */,
+				5571143715A3E78A008F5398 /* main.m */,
+				5571143915A3E78A008F5398 /* CloudNotes-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5571144915A3E78B008F5398 /* CloudNotesTests */ = {
+			isa = PBXGroup;
+			children = (
+				5571144F15A3E78B008F5398 /* CloudNotesTests.h */,
+				5571145015A3E78B008F5398 /* CloudNotesTests.m */,
+				5571144A15A3E78B008F5398 /* Supporting Files */,
+			);
+			path = CloudNotesTests;
+			sourceTree = "<group>";
+		};
+		5571144A15A3E78B008F5398 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5571144B15A3E78B008F5398 /* CloudNotesTests-Info.plist */,
+				5571144C15A3E78B008F5398 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5571142615A3E78A008F5398 /* CloudNotes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5571145415A3E78B008F5398 /* Build configuration list for PBXNativeTarget "CloudNotes" */;
+			buildPhases = (
+				5571142315A3E78A008F5398 /* Sources */,
+				5571142415A3E78A008F5398 /* Frameworks */,
+				5571142515A3E78A008F5398 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CloudNotes;
+			productName = CloudNotes;
+			productReference = 5571142715A3E78A008F5398 /* CloudNotes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5571144115A3E78B008F5398 /* CloudNotesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5571145715A3E78B008F5398 /* Build configuration list for PBXNativeTarget "CloudNotesTests" */;
+			buildPhases = (
+				5571143D15A3E78B008F5398 /* Sources */,
+				5571143E15A3E78B008F5398 /* Frameworks */,
+				5571143F15A3E78B008F5398 /* Resources */,
+				5571144015A3E78B008F5398 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5571144815A3E78B008F5398 /* PBXTargetDependency */,
+			);
+			name = CloudNotesTests;
+			productName = CloudNotesTests;
+			productReference = 5571144215A3E78B008F5398 /* CloudNotesTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5571141E15A3E78A008F5398 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = M.Blomkvist;
+			};
+			buildConfigurationList = 5571142115A3E78A008F5398 /* Build configuration list for PBXProject "CloudNotes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5571141C15A3E78A008F5398;
+			productRefGroup = 5571142815A3E78A008F5398 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5571142615A3E78A008F5398 /* CloudNotes */,
+				5571144115A3E78B008F5398 /* CloudNotesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5571142515A3E78A008F5398 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5571143615A3E78A008F5398 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5571143F15A3E78B008F5398 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5571144E15A3E78B008F5398 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5571144015A3E78B008F5398 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5571142315A3E78A008F5398 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5571143815A3E78A008F5398 /* main.m in Sources */,
+				5571143C15A3E78A008F5398 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5571143D15A3E78B008F5398 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5571145115A3E78B008F5398 /* CloudNotesTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5571144815A3E78B008F5398 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5571142615A3E78A008F5398 /* CloudNotes */;
+			targetProxy = 5571144715A3E78B008F5398 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5571143415A3E78A008F5398 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5571143515A3E78A008F5398 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5571144C15A3E78B008F5398 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5571144D15A3E78B008F5398 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5571145215A3E78B008F5398 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5571145315A3E78B008F5398 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5571145515A3E78B008F5398 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CloudNotes/CloudNotes-Prefix.pch";
+				INFOPLIST_FILE = "CloudNotes/CloudNotes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5571145615A3E78B008F5398 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CloudNotes/CloudNotes-Prefix.pch";
+				INFOPLIST_FILE = "CloudNotes/CloudNotes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		5571145815A3E78B008F5398 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CloudNotes.app/CloudNotes";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CloudNotes/CloudNotes-Prefix.pch";
+				INFOPLIST_FILE = "CloudNotesTests/CloudNotesTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		5571145915A3E78B008F5398 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CloudNotes.app/CloudNotes";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CloudNotes/CloudNotes-Prefix.pch";
+				INFOPLIST_FILE = "CloudNotesTests/CloudNotesTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5571142115A3E78A008F5398 /* Build configuration list for PBXProject "CloudNotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5571145215A3E78B008F5398 /* Debug */,
+				5571145315A3E78B008F5398 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5571145415A3E78B008F5398 /* Build configuration list for PBXNativeTarget "CloudNotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5571145515A3E78B008F5398 /* Debug */,
+				5571145615A3E78B008F5398 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5571145715A3E78B008F5398 /* Build configuration list for PBXNativeTarget "CloudNotesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5571145815A3E78B008F5398 /* Debug */,
+				5571145915A3E78B008F5398 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5571141E15A3E78A008F5398 /* Project object */;
+}
