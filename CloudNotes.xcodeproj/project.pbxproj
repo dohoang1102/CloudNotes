@@ -12,12 +12,39 @@
 		5571143015A3E78A008F5398 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5571142F15A3E78A008F5398 /* CoreGraphics.framework */; };
 		5571143615A3E78A008F5398 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5571143415A3E78A008F5398 /* InfoPlist.strings */; };
 		5571143815A3E78A008F5398 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571143715A3E78A008F5398 /* main.m */; };
-		5571143C15A3E78A008F5398 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571143B15A3E78A008F5398 /* AppDelegate.m */; };
+		5571143C15A3E78A008F5398 /* CloudNotesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571143B15A3E78A008F5398 /* CloudNotesAppDelegate.m */; };
 		5571144415A3E78B008F5398 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5571144315A3E78B008F5398 /* SenTestingKit.framework */; };
 		5571144515A3E78B008F5398 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5571142B15A3E78A008F5398 /* UIKit.framework */; };
 		5571144615A3E78B008F5398 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5571142D15A3E78A008F5398 /* Foundation.framework */; };
 		5571144E15A3E78B008F5398 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5571144C15A3E78B008F5398 /* InfoPlist.strings */; };
 		5571145115A3E78B008F5398 /* CloudNotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571145015A3E78B008F5398 /* CloudNotesTests.m */; };
+		5571145C15A3E9B8008F5398 /* NoteDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571145B15A3E9B8008F5398 /* NoteDocument.m */; };
+		5571145D15A3E9B8008F5398 /* NoteDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571145B15A3E9B8008F5398 /* NoteDocument.m */; };
+		5571146015A3FAA6008F5398 /* CloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571145F15A3FAA6008F5398 /* CloudManager.m */; };
+		5571146115A3FAA6008F5398 /* CloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571145F15A3FAA6008F5398 /* CloudManager.m */; };
+		5571146515A44020008F5398 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571146315A44020008F5398 /* RootViewController.m */; };
+		5571146615A44020008F5398 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571146315A44020008F5398 /* RootViewController.m */; };
+		5571146E15A4405F008F5398 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 5571146A15A4405F008F5398 /* Red.png */; };
+		5571146F15A4405F008F5398 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 5571146A15A4405F008F5398 /* Red.png */; };
+		5571147015A4405F008F5398 /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 5571146B15A4405F008F5398 /* Green.png */; };
+		5571147115A4405F008F5398 /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 5571146B15A4405F008F5398 /* Green.png */; };
+		5571147215A4405F008F5398 /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5571146C15A4405F008F5398 /* Yellow.png */; };
+		5571147315A4405F008F5398 /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5571146C15A4405F008F5398 /* Yellow.png */; };
+		5571147415A4405F008F5398 /* pencil-icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5571146D15A4405F008F5398 /* pencil-icon.jpg */; };
+		5571147515A4405F008F5398 /* pencil-icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5571146D15A4405F008F5398 /* pencil-icon.jpg */; };
+		5571147915A4409A008F5398 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571147715A4409A008F5398 /* DetailViewController.m */; };
+		5571147A15A4409A008F5398 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5571147715A4409A008F5398 /* DetailViewController.m */; };
+		558700EE15A51C0300147CD3 /* NoteTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 558700ED15A51C0300147CD3 /* NoteTableCell.m */; };
+		558700EF15A51C0300147CD3 /* NoteTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 558700ED15A51C0300147CD3 /* NoteTableCell.m */; };
+		558700F315A51E9200147CD3 /* DocumentStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 558700F215A51E9100147CD3 /* DocumentStatusView.m */; };
+		558700F415A51E9200147CD3 /* DocumentStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 558700F215A51E9100147CD3 /* DocumentStatusView.m */; };
+		558700FB15A5396F00147CD3 /* RootViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 558700FA15A5396F00147CD3 /* RootViewController_iPhone.xib */; };
+		558700FC15A5396F00147CD3 /* RootViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 558700FA15A5396F00147CD3 /* RootViewController_iPhone.xib */; };
+		558700FE15A53A0100147CD3 /* RootViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 558700FD15A53A0000147CD3 /* RootViewController_iPad.xib */; };
+		558700FF15A53A0100147CD3 /* RootViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 558700FD15A53A0000147CD3 /* RootViewController_iPad.xib */; };
+		55A930C415A53B11005E04F4 /* DetailViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55A930C315A53B11005E04F4 /* DetailViewController_iPhone.xib */; };
+		55A930C515A53B11005E04F4 /* DetailViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55A930C315A53B11005E04F4 /* DetailViewController_iPhone.xib */; };
+		55E7975715A53D9700787EF1 /* DetailViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E7975615A53D9700787EF1 /* DetailViewController_iPad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,14 +66,35 @@
 		5571143515A3E78A008F5398 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5571143715A3E78A008F5398 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5571143915A3E78A008F5398 /* CloudNotes-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudNotes-Prefix.pch"; sourceTree = "<group>"; };
-		5571143A15A3E78A008F5398 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5571143B15A3E78A008F5398 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5571143A15A3E78A008F5398 /* CloudNotesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudNotesAppDelegate.h; sourceTree = "<group>"; };
+		5571143B15A3E78A008F5398 /* CloudNotesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudNotesAppDelegate.m; sourceTree = "<group>"; };
 		5571144215A3E78B008F5398 /* CloudNotesTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudNotesTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5571144315A3E78B008F5398 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		5571144B15A3E78B008F5398 /* CloudNotesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CloudNotesTests-Info.plist"; sourceTree = "<group>"; };
 		5571144D15A3E78B008F5398 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5571144F15A3E78B008F5398 /* CloudNotesTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudNotesTests.h; sourceTree = "<group>"; };
 		5571145015A3E78B008F5398 /* CloudNotesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudNotesTests.m; sourceTree = "<group>"; };
+		5571145A15A3E9B7008F5398 /* NoteDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteDocument.h; sourceTree = "<group>"; };
+		5571145B15A3E9B8008F5398 /* NoteDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteDocument.m; sourceTree = "<group>"; };
+		5571145E15A3FAA6008F5398 /* CloudManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudManager.h; sourceTree = "<group>"; };
+		5571145F15A3FAA6008F5398 /* CloudManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudManager.m; sourceTree = "<group>"; };
+		5571146215A44020008F5398 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		5571146315A44020008F5398 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		5571146A15A4405F008F5398 /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red.png; sourceTree = "<group>"; };
+		5571146B15A4405F008F5398 /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
+		5571146C15A4405F008F5398 /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow.png; sourceTree = "<group>"; };
+		5571146D15A4405F008F5398 /* pencil-icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "pencil-icon.jpg"; sourceTree = "<group>"; };
+		5571147615A4409A008F5398 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		5571147715A4409A008F5398 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		558700EC15A51C0300147CD3 /* NoteTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTableCell.h; sourceTree = "<group>"; };
+		558700ED15A51C0300147CD3 /* NoteTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTableCell.m; sourceTree = "<group>"; };
+		558700F115A51E9100147CD3 /* DocumentStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentStatusView.h; sourceTree = "<group>"; };
+		558700F215A51E9100147CD3 /* DocumentStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentStatusView.m; sourceTree = "<group>"; };
+		558700FA15A5396F00147CD3 /* RootViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootViewController_iPhone.xib; path = ../RootViewController_iPhone.xib; sourceTree = "<group>"; };
+		558700FD15A53A0000147CD3 /* RootViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController_iPad.xib; sourceTree = "<group>"; };
+		55A930C315A53B11005E04F4 /* DetailViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailViewController_iPhone.xib; path = ../DetailViewController_iPhone.xib; sourceTree = "<group>"; };
+		55E7975615A53D9700787EF1 /* DetailViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController_iPad.xib; sourceTree = "<group>"; };
+		55E7975915A53F4900787EF1 /* CloudNotes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CloudNotes.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +128,7 @@
 				5571144915A3E78B008F5398 /* CloudNotesTests */,
 				5571142A15A3E78A008F5398 /* Frameworks */,
 				5571142815A3E78A008F5398 /* Products */,
+				5571143215A3E78A008F5398 /* Supporting Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,9 +155,15 @@
 		5571143115A3E78A008F5398 /* CloudNotes */ = {
 			isa = PBXGroup;
 			children = (
-				5571143A15A3E78A008F5398 /* AppDelegate.h */,
-				5571143B15A3E78A008F5398 /* AppDelegate.m */,
-				5571143215A3E78A008F5398 /* Supporting Files */,
+				5571143A15A3E78A008F5398 /* CloudNotesAppDelegate.h */,
+				5571143B15A3E78A008F5398 /* CloudNotesAppDelegate.m */,
+				5571147615A4409A008F5398 /* DetailViewController.h */,
+				5571147715A4409A008F5398 /* DetailViewController.m */,
+				5571145A15A3E9B7008F5398 /* NoteDocument.h */,
+				5571145B15A3E9B8008F5398 /* NoteDocument.m */,
+				5571145E15A3FAA6008F5398 /* CloudManager.h */,
+				5571145F15A3FAA6008F5398 /* CloudManager.m */,
+				5571146915A44030008F5398 /* Other Classes */,
 			);
 			path = CloudNotes;
 			sourceTree = "<group>";
@@ -116,12 +171,18 @@
 		5571143215A3E78A008F5398 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				55E7975915A53F4900787EF1 /* CloudNotes.entitlements */,
+				5571146A15A4405F008F5398 /* Red.png */,
+				5571146B15A4405F008F5398 /* Green.png */,
+				5571146C15A4405F008F5398 /* Yellow.png */,
+				5571146D15A4405F008F5398 /* pencil-icon.jpg */,
 				5571143315A3E78A008F5398 /* CloudNotes-Info.plist */,
 				5571143415A3E78A008F5398 /* InfoPlist.strings */,
 				5571143715A3E78A008F5398 /* main.m */,
 				5571143915A3E78A008F5398 /* CloudNotes-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = CloudNotes;
 			sourceTree = "<group>";
 		};
 		5571144915A3E78B008F5398 /* CloudNotesTests */ = {
@@ -141,6 +202,23 @@
 				5571144C15A3E78B008F5398 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5571146915A44030008F5398 /* Other Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5571146215A44020008F5398 /* RootViewController.h */,
+				5571146315A44020008F5398 /* RootViewController.m */,
+				558700EC15A51C0300147CD3 /* NoteTableCell.h */,
+				558700ED15A51C0300147CD3 /* NoteTableCell.m */,
+				558700F115A51E9100147CD3 /* DocumentStatusView.h */,
+				558700F215A51E9100147CD3 /* DocumentStatusView.m */,
+				558700FA15A5396F00147CD3 /* RootViewController_iPhone.xib */,
+				558700FD15A53A0000147CD3 /* RootViewController_iPad.xib */,
+				55A930C315A53B11005E04F4 /* DetailViewController_iPhone.xib */,
+				55E7975615A53D9700787EF1 /* DetailViewController_iPad.xib */,
+			);
+			name = "Other Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +293,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5571143615A3E78A008F5398 /* InfoPlist.strings in Resources */,
+				5571146E15A4405F008F5398 /* Red.png in Resources */,
+				5571147015A4405F008F5398 /* Green.png in Resources */,
+				5571147215A4405F008F5398 /* Yellow.png in Resources */,
+				5571147415A4405F008F5398 /* pencil-icon.jpg in Resources */,
+				558700FB15A5396F00147CD3 /* RootViewController_iPhone.xib in Resources */,
+				558700FE15A53A0100147CD3 /* RootViewController_iPad.xib in Resources */,
+				55A930C415A53B11005E04F4 /* DetailViewController_iPhone.xib in Resources */,
+				55E7975715A53D9700787EF1 /* DetailViewController_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +309,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5571144E15A3E78B008F5398 /* InfoPlist.strings in Resources */,
+				5571146F15A4405F008F5398 /* Red.png in Resources */,
+				5571147115A4405F008F5398 /* Green.png in Resources */,
+				5571147315A4405F008F5398 /* Yellow.png in Resources */,
+				5571147515A4405F008F5398 /* pencil-icon.jpg in Resources */,
+				558700FC15A5396F00147CD3 /* RootViewController_iPhone.xib in Resources */,
+				558700FF15A53A0100147CD3 /* RootViewController_iPad.xib in Resources */,
+				55A930C515A53B11005E04F4 /* DetailViewController_iPhone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +343,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5571143815A3E78A008F5398 /* main.m in Sources */,
-				5571143C15A3E78A008F5398 /* AppDelegate.m in Sources */,
+				5571143C15A3E78A008F5398 /* CloudNotesAppDelegate.m in Sources */,
+				5571145C15A3E9B8008F5398 /* NoteDocument.m in Sources */,
+				5571146015A3FAA6008F5398 /* CloudManager.m in Sources */,
+				5571146515A44020008F5398 /* RootViewController.m in Sources */,
+				5571147915A4409A008F5398 /* DetailViewController.m in Sources */,
+				558700EE15A51C0300147CD3 /* NoteTableCell.m in Sources */,
+				558700F315A51E9200147CD3 /* DocumentStatusView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +358,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5571145115A3E78B008F5398 /* CloudNotesTests.m in Sources */,
+				5571145D15A3E9B8008F5398 /* NoteDocument.m in Sources */,
+				5571146115A3FAA6008F5398 /* CloudManager.m in Sources */,
+				5571146615A44020008F5398 /* RootViewController.m in Sources */,
+				5571147A15A4409A008F5398 /* DetailViewController.m in Sources */,
+				558700EF15A51C0300147CD3 /* NoteTableCell.m in Sources */,
+				558700F415A51E9200147CD3 /* DocumentStatusView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +404,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Song Hui (2KGE6A3P5L)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -313,6 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PROVISIONING_PROFILE = "03A8F039-AD55-4F98-AE4D-9505ADB76F96";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -342,6 +449,7 @@
 		5571145515A3E78B008F5398 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CloudNotes/CloudNotes.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CloudNotes/CloudNotes-Prefix.pch";
 				INFOPLIST_FILE = "CloudNotes/CloudNotes-Info.plist";
@@ -353,6 +461,7 @@
 		5571145615A3E78B008F5398 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CloudNotes/CloudNotes.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CloudNotes/CloudNotes-Prefix.pch";
 				INFOPLIST_FILE = "CloudNotes/CloudNotes-Info.plist";
@@ -414,6 +523,7 @@
 				5571145615A3E78B008F5398 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5571145715A3E78B008F5398 /* Build configuration list for PBXNativeTarget "CloudNotesTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +532,7 @@
 				5571145915A3E78B008F5398 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AppDelegate.h"
+#import "CloudNotesAppDelegate.h"
 
 int main(int argc, char *argv[])
 {
+    int retVal = 0;
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+        retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([CloudNotesAppDelegate class]));
     }
+    return retVal;
 }
