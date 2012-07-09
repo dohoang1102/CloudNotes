@@ -10,7 +10,7 @@
 #import "DetailViewController.h"
 #import "CloudManager.h"
 
-// 步骤12，一个文档帮助类
+// 步骤12, 一个文档帮助类
 
 @interface FileRepresentation : NSObject
 
@@ -42,19 +42,16 @@
 
 @end
 
-@interface RootViewController ()
-
-// 步骤13，写rootViewController的变量
+@implementation RootViewController
 {
+
+// 步骤13, 写rootViewController的变量
+    
     NSMetadataQuery* _query;
     NSMetadataQuery* _previewQuery;
     NSMutableArray* _fileList;
     NSMutableDictionary* _previewLoadingOperations;
 }
-
-@end
-
-@implementation RootViewController
 
 // 步骤14, 阅读了所有的代码，读懂了rootViewController,抄写代码
 
@@ -68,10 +65,10 @@
             self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
         }
         
-        _fileList = [NSMutableArray array];
-        _previewLoadingOperations = [NSMutableDictionary dictionary];
+        _fileList = [[NSMutableArray alloc] init];
+        _previewLoadingOperations = [[NSMutableDictionary alloc] init];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCloudEnabled:) name:ICloudStateUpdatedNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCloudEnabled) name:ICloudStateUpdatedNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentFinishedClosing:) name:DocumentFinishedClosingNotification object:nil];
     }
     return self;
@@ -79,8 +76,6 @@
 
 - (void)dealloc
 {
-    [_query stopQuery];
-
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -98,8 +93,8 @@
         }
         else {
             _query = [[NSMetadataQuery alloc] init];
-            [_query setSearchScopes:[NSArray arrayWithObjects:NSMetadataQueryUbiquitousDataScope,NSMetadataQueryUbiquitousDocumentsScope, nil]];
-            [_query setPredicate:[NSPredicate predicateWithFormat:@"%K LIKE '*.note*'",NSMetadataItemFSNameKey]];
+            [_query setSearchScopes:[NSArray arrayWithObjects:NSMetadataQueryUbiquitousDocumentsScope, NSMetadataQueryUbiquitousDataScope, nil]];
+            [_query setPredicate:[NSPredicate predicateWithFormat:@"%K LIKE '*.note*'", NSMetadataItemFSNameKey]];
             NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
             [notificationCenter addObserver:self selector:@selector(fileListReceived) name:NSMetadataQueryDidFinishGatheringNotification object:_query];
             [notificationCenter addObserver:self selector:@selector(fileListReceived) name:NSMetadataQueryDidUpdateNotification object:_query];
@@ -107,17 +102,17 @@
         }
     }
     else {
-        NSURL* documentDirectoryURL = [[CloudManager sharedManager] documentsDirectoryURL];
-        NSArray* localDocuments = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:documentDirectoryURL includingPropertiesForKeys:nil options:0 error:nil];
+        NSURL* documentsDirectoryURL = [[CloudManager sharedManager] documentsDirectoryURL];
+        NSArray* localDocuments = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:documentsDirectoryURL includingPropertiesForKeys:nil options:0 error:nil];
         NSURL* dataDirectoryURL = [[CloudManager sharedManager] dataDirectoryURL];
         for (NSURL* document in localDocuments) {
             if ([document.pathExtension isEqualToString:@"note"]) {
-                FileRepresentation* filePresentation = [[FileRepresentation alloc] initWithFileName:[document lastPathComponent] url:document];
-                NSString* previewFilePath = [[dataDirectoryURL path] stringByAppendingPathComponent:[[document lastPathComponent] stringByAppendingPathComponent:@"preview"]];
+                FileRepresentation* fileRepresentation = [[FileRepresentation alloc] initWithFileName:[[document lastPathComponent] stringByDeletingPathExtension] url:document];
+                NSString* previewFilePath = [[dataDirectoryURL path] stringByAppendingPathComponent:[[document lastPathComponent] stringByAppendingPathExtension:@"preview"]];
                 if ([[NSFileManager defaultManager] fileExistsAtPath:previewFilePath]) {
-                    filePresentation.previewURL = [NSURL fileURLWithPath:previewFilePath];
+                    fileRepresentation.previewURL = [NSURL fileURLWithPath:previewFilePath];
                 }
-                [_fileList addObject:filePresentation];
+                [_fileList addObject:fileRepresentation];
             }
         }
     }
@@ -131,8 +126,8 @@
         [self.navigationController popToRootViewControllerAnimated:NO];
     }
     else {
-        DetailViewController* emptyDetailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController_iPad" bundle:nil];
-        self.splitViewController.viewControllers = [NSArray arrayWithObjects:self.navigationController, emptyDetailViewController, nil];
+        DetailViewController* emptyDetailController = [[DetailViewController alloc] initWithNibName:@"DetailViewController_iPad" bundle:nil];
+        self.splitViewController.viewControllers = [NSArray arrayWithObjects:self.navigationController, emptyDetailController, nil];
     }
     
     [self updateFileList];
@@ -148,18 +143,33 @@
     }
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ? toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown : YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.tableView.allowsSelectionDuringEditing = NO;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"previewcell"];
-    UIBarButtonItem* plusButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createFile:)];
+    
+    UIBarButtonItem* plusButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createFile)];
     self.navigationItem.rightBarButtonItem = plusButton;
     
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
     [self updateFileList];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    _fileList = nil;
+    [_query stopQuery];
+    _query = nil;
 }
 
 - (void)createFile
@@ -188,7 +198,7 @@
         NSURL* fileURL = [[[CloudManager sharedManager] documentsDirectoryURL] URLByAppendingPathComponent:[fileName stringByAppendingPathExtension:@"note"]];
         FileRepresentation* fileRepresentation = [[FileRepresentation alloc] initWithFileName:fileName url:fileURL];
         [_fileList addObject:fileRepresentation];
-        [_fileList sortUsingComparator:^NSComparisonResult(FileRepresentation* firstObject, FileRepresentation* secondObject) {
+        [_fileList sortUsingComparator:^(FileRepresentation* firstObject, FileRepresentation* secondObject) {
             return [firstObject.fileName compare:secondObject.fileName];
         }];
         NSInteger insertionRow = [_fileList indexOfObject:fileRepresentation];
@@ -210,15 +220,15 @@
     NSMutableArray* oldFileList = [_fileList mutableCopy];
     
     [_fileList removeAllObjects];
-    NSArray* results = [[_query results] sortedArrayUsingComparator:^NSComparisonResult(NSMetadataItem* firstObject, NSMetadataItem* secondObject) {
+    NSArray* results = [[_query results] sortedArrayUsingComparator:^(NSMetadataItem* firstObject, NSMetadataItem* secondObject) {
         NSString* firstFileName = [firstObject valueForAttribute:NSMetadataItemFSNameKey];
         NSString* secondFileName = [secondObject valueForAttribute:NSMetadataItemFSNameKey];
         NSComparisonResult result = [firstFileName.pathExtension compare:secondFileName.pathExtension];
         return result == NSOrderedSame ? [firstFileName compare:secondFileName] : result;
     }];
     
-    for (NSMetadataItem *result in results) {
-        NSURL* fileURL = [result valueForAttribute:NSMetadataItemFSNameKey];
+    for (NSMetadataItem* result in results) {
+        NSURL* fileURL = [result valueForAttribute:NSMetadataItemURLKey];
         NSString* fileName = [result valueForAttribute:NSMetadataItemDisplayNameKey];
         
         if ([[fileURL pathExtension] isEqualToString:@"note"]) {
@@ -230,7 +240,7 @@
             [_fileList addObject:fileRepresentation];
         }
         else if ([[fileURL pathExtension] isEqualToString:@"preview"]) {
-            [_fileList enumerateObjectsUsingBlock:^(FileRepresentation* fileRepresentation, NSUInteger index, BOOL *stop) {
+            [_fileList enumerateObjectsUsingBlock:^(FileRepresentation* fileRepresentation, NSUInteger index, BOOL* stop) {
                 if ([[fileName stringByDeletingPathExtension] isEqualToString:fileRepresentation.fileName]) {
                     if (!fileRepresentation.previewURL) {
                         fileRepresentation.previewURL = [result valueForAttribute:NSMetadataItemURLKey];
@@ -246,18 +256,18 @@
     [_fileList sortUsingComparator:^(FileRepresentation* file1, FileRepresentation* file2) {
         return [file1.fileName compare:file2.fileName];
     }];
-
-    NSMutableArray* insertionRows = [NSMutableArray array];
-    NSMutableArray* deletionRows = [NSMutableArray array];
-
-    [_fileList enumerateObjectsUsingBlock:^(FileRepresentation* newFile, NSUInteger newIndex, BOOL *stop) {
+    
+    NSMutableArray* insertionRows = [[NSMutableArray alloc] init];
+    NSMutableArray* deletionRows = [[NSMutableArray alloc] init];
+    
+    [_fileList enumerateObjectsUsingBlock:^(FileRepresentation* newFile, NSUInteger newIndex, BOOL* stop) {
         if (![oldFileList containsObject:newFile]) {
             [insertionRows addObject:[NSIndexPath indexPathForRow:newIndex inSection:0]];
         }
     }];
     
-    [oldFileList enumerateObjectsUsingBlock:^(FileRepresentation* oldFile, NSUInteger oldIndex, BOOL *stop) {
-        if (![_fileList containsObject:oldFileList]) {
+    [oldFileList enumerateObjectsUsingBlock:^(FileRepresentation* oldFile, NSUInteger oldIndex, BOOL* stop) {
+        if (![_fileList containsObject:oldFile]) {
             [deletionRows addObject:[NSIndexPath indexPathForRow:oldIndex inSection:0]];
         }
     }];
@@ -275,6 +285,9 @@
 
 - (void)loadPreviewImageForIndexPath:(NSIndexPath*)indexPath
 {
+    // Initiate an asynchronous loading of a preview image which uses coordinated file access.
+    // Keep a reference to the loading operation itself so that it can be cancelled if no longer needed.
+    
     FileRepresentation* fileRepresentation = _fileList[indexPath.row];
     NSBlockOperation* previewLoadingOperation = [NSBlockOperation blockOperationWithBlock:^(void) {
         UITableViewCell* visibleCell = [self.tableView cellForRowAtIndexPath:indexPath];
@@ -284,9 +297,9 @@
     }];
     _previewLoadingOperations[indexPath] = previewLoadingOperation;
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
         NSFileCoordinator* fileCoordinator = [[NSFileCoordinator alloc] initWithFilePresenter:nil];
-        [fileCoordinator coordinateReadingItemAtURL:fileRepresentation.previewURL options:0 error:nil byAccessor:^(NSURL *newURL) {
+        [fileCoordinator coordinateReadingItemAtURL:fileRepresentation.previewURL options:0 error:nil byAccessor:^(NSURL* previewURL) {
             [[NSOperationQueue mainQueue] addOperation:previewLoadingOperation];
         }];
     });
@@ -319,8 +332,7 @@
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    CloudManager* cloudManager = [CloudManager sharedManager];
-    return cloudManager ? @"iCloud Notes" : @"Local Notes";
+    return [[CloudManager sharedManager] isCloudEnabled] ? @"iCloud Notes" : @"Local Notes:";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -366,11 +378,6 @@
     }
     
     [super setEditing:editing animated:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ? interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown : YES;
 }
 
 @end

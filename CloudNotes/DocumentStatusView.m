@@ -14,9 +14,9 @@
     UILabel* _unsavedLabel;
 }
 
-- (id)initWithFrame:(CGRect)frame
+-(id)initWithFrame:(CGRect)frame
 {
-    if (self = [super initWithFrame:frame]) {
+    if ((self = [super initWithFrame:frame])) {
         _circleView = [[UIImageView alloc] initWithFrame:CGRectMake(8, 8, CGRectGetHeight(frame) - 16, CGRectGetHeight(frame) - 16)];
         _circleView.image = [UIImage imageNamed:@"Green"];
         _unsavedLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetHeight(frame), 2, 80, CGRectGetHeight(frame) - 4)];
@@ -28,8 +28,10 @@
         [self addSubview:_unsavedLabel];
         self.backgroundColor = [UIColor clearColor];
     }
+    
     return self;
 }
+
 
 -(CGSize)sizeThatFits:(CGSize)size
 {
@@ -49,7 +51,7 @@
             _circleView.image = [UIImage imageNamed:@"Yellow"];
         }
         else {
-            _circleView.image = [UIImage imageNamed:@"Creen"];
+            _circleView.image = [UIImage imageNamed:@"Green"];
         }
     }
 }

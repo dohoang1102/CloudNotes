@@ -31,7 +31,7 @@
     // Fetch a previously stored value for the ubiquity identity token from NSUserDefaults.
     // That value can be compared to the current token to determine if the iCloud login has changed since the last launch of our application
     
-    NSData* oldTokenData = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.apple.CloudNotes.UbiquityIdentityToken"];
+    NSData* oldTokenData = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.millennium.CloudNotes.UbiquityIdentityToken"];
     id oldToken = oldTokenData ? [NSKeyedUnarchiver unarchiveObjectWithData:oldTokenData] : nil;
     if (oldTokenData && ![oldToken isEqual:currentToken]) {
         // If we had a token, we were signed in before.
@@ -49,10 +49,10 @@
     
     if (currentToken) {
         NSData* newTokenData = [NSKeyedArchiver archivedDataWithRootObject:currentToken];
-        [[NSUserDefaults standardUserDefaults] setObject:newTokenData forKey:@"com.apple.CloudNotes.UbiquityIdentityToken"];
+        [[NSUserDefaults standardUserDefaults] setObject:newTokenData forKey:@"com.millennium.CloudNotes.UbiquityIdentityToken"];
     }
     else {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"com.apple.CloudNotes.UbiquityIdentityToken"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"com.millennium.CloudNotes.UbiquityIdentityToken"];
     }
 }
 
@@ -65,7 +65,7 @@
     
     id currentToken = [[NSFileManager defaultManager] ubiquityIdentityToken];
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString* userICloudChoice = [userDefaults stringForKey:@"com.apple.CloudNotes.UseICloudStorage"];
+    NSString* userICloudChoice = [userDefaults stringForKey:@"com.millennium.CloudNotes.UseICloudStorage"];
     
     if ([userICloudChoice isEqualToString:@"YES"]) {
         [self checkUbiquitousTokenFromPreviousLaunch:currentToken];
@@ -84,7 +84,7 @@
         [[CloudManager sharedManager] setIsCloudEnabled:NO];
         
         // Since the user is signed out of iCloud, reset the preference to not use iCloud, so if they sign in again we will prompt them to move data
-        [userDefaults removeObjectForKey:@"com.apple.CloudNotes.UseICloudStorage"];
+        [userDefaults removeObjectForKey:@"com.millennium.CloudNotes.UseICloudStorage"];
     }
     
     [self storeCurrentUbiquityToken:currentToken];
@@ -93,11 +93,11 @@
 - (void)alertView:(UIAlertView*)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
-        [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"com.apple.CloudNotes.UseICloudStorage"];
+        [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"com.millennium.CloudNotes.UseICloudStorage"];
         [[CloudManager sharedManager] setIsCloudEnabled:YES];
     }
     else {
-        [[NSUserDefaults standardUserDefaults] setValue:@"NO" forKey:@"com.apple.CloudNotes.UseICloudStorage"];
+        [[NSUserDefaults standardUserDefaults] setValue:@"NO" forKey:@"com.millennium.CloudNotes.UseICloudStorage"];
         [[CloudManager sharedManager] setIsCloudEnabled:NO];
     }
 }
@@ -119,13 +119,13 @@
         self.window.rootViewController = self.navigationController;
     } else {
         RootViewController *controller = [[RootViewController alloc] initWithNibName:@"RootViewController_iPad" bundle:nil];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
+        self.navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
         
         DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController_iPad" bundle:nil];
         
         self.splitViewController = [[UISplitViewController alloc] init];
         self.splitViewController.delegate = detailViewController;
-        self.splitViewController.viewControllers = [NSArray arrayWithObjects:navigationController, detailViewController, nil];
+        self.splitViewController.viewControllers = [NSArray arrayWithObjects:self.navigationController, detailViewController, nil];
         
         self.window.rootViewController = self.splitViewController;
     }

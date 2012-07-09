@@ -8,11 +8,11 @@
 
 #import "CloudManager.h"
 
-static CloudManager* __sharedManager;
-
 NSString* const ICloudStateUpdatedNotification = @"ICloudStateUpdatedNotification";
 NSString* const UbiquitousContainerFetchingWillBeginNotification = @"UbiquitousContainerFetchingWillBeginNotification";
 NSString* const UbiquitousContainerFetchingDidEndNotification = @"UbiquitousContainerFetchingDidEndNotification";
+
+static CloudManager* __sharedManager;
 
 @implementation CloudManager
 {
@@ -32,10 +32,10 @@ NSString* const UbiquitousContainerFetchingDidEndNotification = @"UbiquitousCont
     return __sharedManager;
 }
 
-- (id) init
+- (id)init
 {
     if ((self = [super init])) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCloudEnabled) name:NSUbiquityIdentityDidChangeNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateICloudEnabled:) name:NSUbiquityIdentityDidChangeNotification object:nil];
         [self updateFileStorageContainerURL:nil];
     }
     
@@ -47,24 +47,29 @@ NSString* const UbiquitousContainerFetchingDidEndNotification = @"UbiquitousCont
 
 - (void)setIsCloudEnabled:(BOOL)isCloudEnabled
 {
+    // Asynchronously update our data directory URL and documents directory URL
+    // If we're enabling cloud storage, we move any local documents into the cloud container after the URLs are updated.
+    // 将所有存储在本地沙盘的文档复制到iCloud上
+
+    
     if (isCloudEnabled != _isCloudEnabled) {
         _isCloudEnabled = isCloudEnabled;
         NSURL* oldDataDirectoryURL = [self dataDirectoryURL];
-        NSURL* oldDocumentDirectoryURL = [self documentsDirectoryURL];
-        [self updateFileStorageContainerURL:^{
+        NSURL* oldDocumentsDirectoryURL = [self documentsDirectoryURL];
+        [self updateFileStorageContainerURL:^(void) {
             if (isCloudEnabled) {
-                // 将所有存储在本地沙盘的文档复制到iCloud上
+                // Now move any existing local documents into iCloud.
                 
-                NSArray *localDocuments = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:oldDocumentDirectoryURL includingPropertiesForKeys:nil options:0 error:nil];
-                NSArray *localPreviews = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:oldDataDirectoryURL includingPropertiesForKeys:nil options:0 error:nil];
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    NSFileManager* fileManager = [NSFileManager defaultManager];
+                NSArray* localDocuments = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:oldDocumentsDirectoryURL includingPropertiesForKeys:nil options:0 error:nil];
+                NSArray* localPreviews = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:oldDataDirectoryURL includingPropertiesForKeys:nil options:0 error:nil];
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+                    NSFileManager* fileManager = [[NSFileManager alloc] init];
                     NSURL* newDataDirectoryURL = [self dataDirectoryURL];
-                    NSURL* newDocumentDirectoryURL = [self documentsDirectoryURL];
+                    NSURL* newDocumentsDirectoryURL = [self documentsDirectoryURL];
                     
                     for (NSURL* documentURL in localDocuments) {
                         if ([[documentURL pathExtension] isEqualToString:@"note"]) {
-                            NSURL* destinationURL = [newDocumentDirectoryURL URLByAppendingPathComponent:[documentURL lastPathComponent]];
+                            NSURL* destinationURL = [newDocumentsDirectoryURL URLByAppendingPathComponent:[documentURL lastPathComponent]];
                             [fileManager setUbiquitous:YES itemAtURL:documentURL destinationURL:destinationURL error:nil];
                         }
                     }
@@ -82,44 +87,25 @@ NSString* const UbiquitousContainerFetchingDidEndNotification = @"UbiquitousCont
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 - (NSURL*)documentsDirectoryURL
 {
     return [_dataDirectoryURL URLByAppendingPathComponent:@"Documents"];
 }
 
-
-
-
-
-
-
-
-
 // 步骤8，更新文件存储位置URL，并且在使用iCloud时发射寻找iCloud Ubiquity Container ID's URL开始结束的通知
 
-- (void)updateFileStorageContainerURL:(void(^)(void))completionHandler
+- (void)updateFileStorageContainerURL:(void (^)(void))completionHandler
 {
+    // Perform the asynchronous update of the data directory and document directory URLs
+    
     @synchronized (self) {
         _dataDirectoryURL = nil;
         if (self.isCloudEnabled) {
             [[NSNotificationCenter defaultCenter] postNotificationName:UbiquitousContainerFetchingWillBeginNotification object:nil];
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                _dataDirectoryURL = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:@"com.millennium.CloudNotes"];
-                dispatch_async(dispatch_get_main_queue(), ^{
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+                _dataDirectoryURL = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:@"9M6NFDBTPN.com.millennium.CloudNotes"];
+                dispatch_sync(dispatch_get_main_queue(), ^(void) {
                     [[NSNotificationCenter defaultCenter] postNotificationName:UbiquitousContainerFetchingDidEndNotification object:nil];
                     
                     if (completionHandler) {
@@ -138,14 +124,16 @@ NSString* const UbiquitousContainerFetchingDidEndNotification = @"UbiquitousCont
 
 - (void)updateICloudEnabled:(NSNotification*)notification
 {
+    // Broadcast our own notification for iCloud state changes that other parts of our application can use and know the CloudManager has updated itself for the new state when they receive the notication.
+    
     if ([[NSFileManager defaultManager] ubiquityIdentityToken]) {
         if (self.isCloudEnabled) {
-            // 说明设备用户选择使用iCloud,并且使用了一个新的UID token,发射这一通知
+            // If we're using iCloud already and we moved to a new token, broadcast a state change for that
             [[NSNotificationCenter defaultCenter] postNotificationName:ICloudStateUpdatedNotification object:nil];
         }
     }
     else {
-        //说明设备没有允许iCloud文档，将状态设置为NO，如果此时我们正在使用iCloud, ？？？ 将会发射通知
+        // If there is no tken now, set our state to NO, which will broadcast a state change if we were using iCloud
         self.isCloudEnabled = NO;
     }
 }

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012年 M.Blomkvist. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 // 步骤1, 写delegate protocol
 @protocol NoteDocumentDelegate;

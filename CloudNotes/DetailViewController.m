@@ -11,13 +11,12 @@
 #import "DocumentStatusView.h"
 #import "NoteTableCell.h"
 
-
 NSString* const DocumentFinishedClosingNotification = @"DocumentFinishedClosingNotification";
 
 @interface DetailViewController ()
 
-@property (nonatomic, strong) UIPopoverController* popoverController;
-@property (nonatomic, strong) IBOutlet UIToolbar* toolbar;
+@property (strong, nonatomic) UIPopoverController *popoverController;
+@property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
 
 - (void)showConflictButton;
@@ -38,7 +37,7 @@ NSString* const DocumentFinishedClosingNotification = @"DocumentFinishedClosingN
 @synthesize popoverController;
 @synthesize representedIndex;
 
-- (id)initWithFileURL:(NSURL *)url createNewFile:(BOOL)createNewFile
+- (id)initWithFileURL:(NSURL*)url createNewFile:(BOOL)createNewFile
 {
     NSString* nibName = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? @"DetailViewController_iPad" : @"DetailViewController_iPhone";
     self = [super initWithNibName:nibName bundle:nil];
@@ -47,8 +46,8 @@ NSString* const DocumentFinishedClosingNotification = @"DocumentFinishedClosingN
         self.title = [[url lastPathComponent] stringByDeletingPathExtension];
         _document.delegate = self;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentStateChanged) name:UIDocumentStateChangedNotification object:_document];
+        _createFile = createNewFile;
     }
-    
     return self;
 }
 
@@ -60,8 +59,6 @@ NSString* const DocumentFinishedClosingNotification = @"DocumentFinishedClosingN
         self.splitViewController.delegate = nil;
     }
 }
-
-// 步骤18, 开始读文档处理部分方法
 
 #pragma mark Document Handling Methods
 
@@ -136,6 +133,8 @@ NSString* const DocumentFinishedClosingNotification = @"DocumentFinishedClosingN
 
 // 步骤25, 查漏补缺, 发现冲突按钮部分没有写
 
+#pragma mark Conflict Handling
+
 - (void)showConflictButton
 {
     if (![self.toolbar.items containsObject:_conflictButton]) {
@@ -205,9 +204,9 @@ NSString* const DocumentFinishedClosingNotification = @"DocumentFinishedClosingN
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidDisappear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewDidDisappear:animated];
     
     //_imageEditingIndexPath决定了viewDidAppear时是否处在imagePickerController的状态,如果是的话,
     // 则没有必要关闭文档
@@ -218,6 +217,7 @@ NSString* const DocumentFinishedClosingNotification = @"DocumentFinishedClosingN
         }];
     }
 }
+
 // 步骤19, 开始UITableViewDataSource部分
 
 #pragma mark UITableViewDataSource methods
@@ -244,6 +244,13 @@ NSString* const DocumentFinishedClosingNotification = @"DocumentFinishedClosingN
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ? interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown : YES;
+}
+
+- (BOOL) splitViewController:(UISplitViewController *)svc
+    shouldHideViewController:(UIViewController *)vc
+               inOrientation:(UIInterfaceOrientation)orientation
+{
+    return (UIInterfaceOrientationIsPortrait(orientation));
 }
 
 - (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController: (UIPopoverController *)pc

@@ -450,10 +450,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CloudNotes/CloudNotes.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Song Hui (2KGE6A3P5L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Song Hui (2KGE6A3P5L)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CloudNotes/CloudNotes-Prefix.pch";
 				INFOPLIST_FILE = "CloudNotes/CloudNotes-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "03A8F039-AD55-4F98-AE4D-9505ADB76F96";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03A8F039-AD55-4F98-AE4D-9505ADB76F96";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -462,10 +466,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CloudNotes/CloudNotes.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Song Hui (2KGE6A3P5L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Song Hui (2KGE6A3P5L)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CloudNotes/CloudNotes-Prefix.pch";
 				INFOPLIST_FILE = "CloudNotes/CloudNotes-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "03A8F039-AD55-4F98-AE4D-9505ADB76F96";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03A8F039-AD55-4F98-AE4D-9505ADB76F96";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

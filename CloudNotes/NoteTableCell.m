@@ -17,9 +17,8 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _textView = [[UITextView alloc] initWithFrame:CGRectMake(50, 5, CGRectGetWidth(self.contentView.bounds) -60, CGRectGetHeight(self.contentView.bounds) - 10)];
-        _textView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
-        UIViewAutoresizingFlexibleWidth;
+        _textView = [[UITextView alloc] initWithFrame:CGRectMake(50, 5, CGRectGetWidth(self.contentView.bounds) - 60, CGRectGetHeight(self.contentView.bounds) - 10)];
+        _textView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         _textView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_textView];
         
@@ -41,3 +40,4 @@
 }
 
 @end
+

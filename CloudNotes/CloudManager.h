@@ -6,7 +6,7 @@
 //  Copyright (c) 2012年 M.Blomkvist. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface CloudManager : NSObject
 

@@ -11,6 +11,8 @@
 
 // 步骤15,写NoteTableCell类
 
+#import <Foundation/Foundation.h>
+
 @class NoteTableCell;
 
 @protocol NoteTableCellDelegate <NSObject>
